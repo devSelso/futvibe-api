@@ -3853,6 +3853,7 @@
       "Microsoft.EntityFrameworkCore >= 9.0.16",
       "Microsoft.EntityFrameworkCore.Design >= 9.*",
       "Microsoft.EntityFrameworkCore.Relational >= 9.0.16",
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
       "Swashbuckle.AspNetCore >= 6.9.0"
     ]
   },
@@ -3927,6 +3928,10 @@
           "Microsoft.EntityFrameworkCore.Relational": {
             "target": "Package",
             "version": "[9.0.16, )"
+          },
+          "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "target": "Package",
+            "version": "[9.0.4, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

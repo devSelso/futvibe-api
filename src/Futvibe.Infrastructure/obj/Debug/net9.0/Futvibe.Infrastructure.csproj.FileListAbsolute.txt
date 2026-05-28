@@ -17,3 +17,4 @@ C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Infrastructure\obj\Debug
 C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Infrastructure\obj\Debug\net9.0\Futvibe.Infrastructure.pdb
 C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Infrastructure\obj\Debug\net9.0\Futvibe.Infrastructure.genruntimeconfig.cache
 C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Infrastructure\obj\Debug\net9.0\ref\Futvibe.Infrastructure.dll
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Infrastructure\obj\Debug\net9.0\Futvibe.Infrastructure.sourcelink.json

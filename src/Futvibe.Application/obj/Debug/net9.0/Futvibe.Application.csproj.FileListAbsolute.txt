@@ -13,3 +13,4 @@ C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\ne
 C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\refint\Futvibe.Application.dll
 C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\Futvibe.Application.pdb
 C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\ref\Futvibe.Application.dll
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\Futvibe.Application.sourcelink.json
