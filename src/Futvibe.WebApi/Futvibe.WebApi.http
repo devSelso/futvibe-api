@@ -1,0 +1,6 @@
+@Futvibe.WebApi_HostAddress = http://localhost:5122
+
+GET {{Futvibe.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

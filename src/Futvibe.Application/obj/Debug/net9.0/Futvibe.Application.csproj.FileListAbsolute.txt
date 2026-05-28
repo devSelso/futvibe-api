@@ -1,0 +1,15 @@
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\bin\Debug\net9.0\Futvibe.Application.deps.json
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\bin\Debug\net9.0\Futvibe.Application.dll
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\bin\Debug\net9.0\Futvibe.Application.pdb
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\bin\Debug\net9.0\Futvibe.Domain.dll
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\bin\Debug\net9.0\Futvibe.Domain.pdb
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\Futvibe.Application.csproj.AssemblyReference.cache
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\Futvibe.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\Futvibe.Application.AssemblyInfoInputs.cache
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\Futvibe.Application.AssemblyInfo.cs
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\Futvibe.Application.csproj.CoreCompileInputs.cache
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\Futvibe..1838ECF8.Up2Date
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\Futvibe.Application.dll
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\refint\Futvibe.Application.dll
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\Futvibe.Application.pdb
+C:\Users\selso\OneDrive\Desktop\futvibe-api\src\Futvibe.Application\obj\Debug\net9.0\ref\Futvibe.Application.dll
