@@ -14,7 +14,7 @@ RUN dotnet restore "Futvibe.sln"
 
 COPY . .
 RUN dotnet publish "src/Futvibe.WebApi/Futvibe.WebApi.csproj" \
-    -c Release -o /app/publish --no-restore
+    -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
