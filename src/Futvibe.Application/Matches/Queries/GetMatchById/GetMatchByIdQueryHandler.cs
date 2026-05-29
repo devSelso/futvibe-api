@@ -14,6 +14,9 @@ public class GetMatchByIdQueryHandler(IMatchRepository matchRepo)
         var match = await matchRepo.GetByIdWithParticipantsAsync(request.Id, ct)
             ?? throw new NotFoundException($"Partida {request.Id} não encontrada.");
 
+        if (match.TryAdvanceStatus())
+            await matchRepo.SaveChangesAsync(ct);
+
         return MatchMapper.ToDto(match);
     }
 }

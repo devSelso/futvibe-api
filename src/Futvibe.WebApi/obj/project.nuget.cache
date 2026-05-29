@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AtYQmTYBrao=",
+  "dgSpecHash": "8s8tkfte21A=",
   "success": true,
-  "projectFilePath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.WebApi\\Futvibe.WebApi.csproj",
+  "projectFilePath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.WebApi\\Futvibe.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\selso\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\selso\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",

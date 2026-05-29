@@ -3250,11 +3250,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.Infrastructure\\Futvibe.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.Infrastructure\\Futvibe.Infrastructure.csproj",
       "projectName": "Futvibe.Infrastructure",
-      "projectPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.Infrastructure\\Futvibe.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.Infrastructure\\Futvibe.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\selso\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\selso\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3269,11 +3269,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.Application\\Futvibe.Application.csproj": {
-              "projectPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.Application\\Futvibe.Application.csproj"
+            "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.Application\\Futvibe.Application.csproj": {
+              "projectPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.Application\\Futvibe.Application.csproj"
             },
-            "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.Domain\\Futvibe.Domain.csproj": {
-              "projectPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.Domain\\Futvibe.Domain.csproj"
+            "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.Domain\\Futvibe.Domain.csproj": {
+              "projectPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.Domain\\Futvibe.Domain.csproj"
             }
           }
         }

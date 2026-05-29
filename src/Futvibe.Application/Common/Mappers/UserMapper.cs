@@ -5,7 +5,7 @@ namespace Futvibe.Application.Common.Mappers;
 
 public static class UserMapper
 {
-    public static UserDto ToDto(User user) => new(
+    public static UserDto ToDto(User user, double? averageRating = null) => new(
         user.Id,
         user.Name,
         user.Email,
@@ -13,5 +13,6 @@ public static class UserMapper
         user.Bio,
         user.Level.ToString().ToLower(),
         user.PresenceScore,
-        user.MatchesPlayed);
+        user.MatchesPlayed,
+        averageRating);
 }

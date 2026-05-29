@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.Domain\\Futvibe.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.Domain\\Futvibe.Domain.csproj",
       "projectName": "Futvibe.Domain",
-      "projectPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.Domain\\Futvibe.Domain.csproj",
+      "projectPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.Domain\\Futvibe.Domain.csproj",
       "packagesPath": "C:\\Users\\selso\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-api\\src\\Futvibe.Domain\\obj\\",
+      "outputPath": "C:\\Users\\selso\\OneDrive\\Desktop\\futvibe-project\\futvibe-api\\src\\Futvibe.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\selso\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -9,6 +9,9 @@ public class FutvibeDbContext(DbContextOptions<FutvibeDbContext> options) : DbCo
     public DbSet<Match> Matches => Set<Match>();
     public DbSet<Participant> Participants => Set<Participant>();
     public DbSet<Banner> Banners => Set<Banner>();
+    public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+    public DbSet<Rating> Ratings => Set<Rating>();
+    public DbSet<MatchActivityLog> MatchActivityLogs => Set<MatchActivityLog>();
 
     protected override void OnModelCreating(ModelBuilder builder)
         => builder.ApplyConfigurationsFromAssembly(typeof(FutvibeDbContext).Assembly);

@@ -21,6 +21,9 @@ public static class DependencyInjection
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IMatchRepository, MatchRepository>();
         services.AddScoped<IBannerRepository, BannerRepository>();
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddScoped<IRatingRepository, RatingRepository>();
+        services.AddScoped<IMatchActivityRepository, MatchActivityRepository>();
 
         services.AddScoped<IJwtService, JwtService>();
 

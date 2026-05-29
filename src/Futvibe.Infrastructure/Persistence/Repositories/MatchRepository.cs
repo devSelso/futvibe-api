@@ -17,19 +17,15 @@ public class MatchRepository(FutvibeDbContext db) : IMatchRepository
             .FirstOrDefaultAsync(m => m.Id == id, ct);
 
     public async Task<IReadOnlyList<Match>> GetAllAsync(
-        MatchLevel? level, bool? paid, int page, int limit, CancellationToken ct = default)
+        string? location, int page, int limit, CancellationToken ct = default)
     {
         var query = db.Matches
             .Include(m => m.Participants)
+            .Where(m => m.Status != Domain.Enums.MatchStatus.Cancelled)
             .AsQueryable();
 
-        if (level.HasValue)
-            query = query.Where(m => m.Level == level.Value);
-
-        if (paid.HasValue)
-            query = paid.Value
-                ? query.Where(m => m.PricePerPlayer > 0)
-                : query.Where(m => m.PricePerPlayer == 0);
+        if (!string.IsNullOrWhiteSpace(location))
+            query = query.Where(m => EF.Functions.ILike(m.Location, $"%{location}%"));
 
         return await query
             .OrderBy(m => m.Date).ThenBy(m => m.Time)
@@ -47,6 +43,9 @@ public class MatchRepository(FutvibeDbContext db) : IMatchRepository
 
     public async Task AddAsync(Match match, CancellationToken ct = default)
         => await db.Matches.AddAsync(match, ct);
+
+    public void Delete(Match match)
+        => db.Matches.Remove(match);
 
     public Task SaveChangesAsync(CancellationToken ct = default)
         => db.SaveChangesAsync(ct);

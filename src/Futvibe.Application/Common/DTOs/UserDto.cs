@@ -8,5 +8,6 @@ public record UserDto(
     string? Bio,
     string Level,
     int PresenceScore,
-    int MatchesPlayed
+    int MatchesPlayed,
+    double? AverageRating = null
 );

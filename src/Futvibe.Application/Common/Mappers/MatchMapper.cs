@@ -15,7 +15,9 @@ public static class MatchMapper
         match.PricePerPlayer,
         match.MaxPlayers,
         match.Visibility.ToString().ToLower(),
+        match.Status.ToString().ToLower(),
         match.HostId,
+        match.Participants.Count(p => p.Status is Domain.Enums.ParticipantStatus.Host or Domain.Enums.ParticipantStatus.Confirmed),
         match.Participants.Select(p => new ParticipantDto(
             p.UserId,
             p.Status.ToString().ToLower(),

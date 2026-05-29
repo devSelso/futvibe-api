@@ -7,6 +7,7 @@ public class Participant
     public Guid MatchId { get; private set; }
     public Guid UserId { get; private set; }
     public ParticipantStatus Status { get; private set; }
+    public bool PresenceRecorded { get; private set; }
 
     public User? User { get; private set; }
 
@@ -18,9 +19,12 @@ public class Participant
         {
             MatchId = matchId,
             UserId = userId,
-            Status = status
+            Status = status,
+            PresenceRecorded = false
         };
     }
 
     public void UpdateStatus(ParticipantStatus status) => Status = status;
+
+    public void MarkPresenceRecorded() => PresenceRecorded = true;
 }

@@ -19,6 +19,10 @@ public class ParticipantConfiguration : IEntityTypeConfiguration<Participant>
             .HasConversion<string>()
             .IsRequired();
 
+        builder.Property(p => p.PresenceRecorded)
+            .HasColumnName("presence_recorded")
+            .HasDefaultValue(false);
+
         builder.HasIndex(p => p.UserId);
 
         builder.HasOne(p => p.User)

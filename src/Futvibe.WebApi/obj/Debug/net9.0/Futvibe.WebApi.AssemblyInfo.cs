@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Futvibe.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b07ee8deb7b8c811e020240bf04b6e595e3d13c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e839130849adcd77704a7d05ef9cb50a7e5bb93c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Futvibe.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Futvibe.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

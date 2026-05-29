@@ -1,3 +1,4 @@
+using Futvibe.Application.Auth;
 using Futvibe.Application.Common.DTOs;
 using Futvibe.Domain.Exceptions;
 using Futvibe.Domain.Interfaces.Repositories;
@@ -8,6 +9,7 @@ namespace Futvibe.Application.Auth.Commands.Login;
 
 public class LoginCommandHandler(
     IUserRepository userRepo,
+    IRefreshTokenRepository refreshTokenRepo,
     IJwtService jwtService) : IRequestHandler<LoginCommand, LoginResult>
 {
     public async Task<LoginResult> Handle(LoginCommand request, CancellationToken ct)
@@ -18,7 +20,11 @@ public class LoginCommandHandler(
         if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
             throw new BusinessException("Credenciais inválidas.");
 
-        var token = jwtService.Generate(user);
+        var accessToken = jwtService.Generate(user);
+        var (rawRefreshToken, refreshToken) = RefreshTokenFactory.Create(user.Id);
+
+        await refreshTokenRepo.AddAsync(refreshToken, ct);
+        await refreshTokenRepo.SaveChangesAsync(ct);
 
         var dto = new UserDto(
             user.Id,
@@ -30,6 +36,6 @@ public class LoginCommandHandler(
             user.PresenceScore,
             user.MatchesPlayed);
 
-        return new LoginResult(token, dto);
+        return new LoginResult(accessToken, rawRefreshToken, dto);
     }
 }

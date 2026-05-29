@@ -6,5 +6,6 @@ public enum ParticipantStatus
     Confirmed,
     Pending,
     Rejected,
-    Waitlist
+    Waitlist,
+    Left
 }

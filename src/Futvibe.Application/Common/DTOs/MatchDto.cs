@@ -10,6 +10,8 @@ public record MatchDto(
     decimal PricePerPlayer,
     int MaxPlayers,
     string Visibility,
+    string Status,
     Guid HostId,
+    int ParticipantCount,
     IReadOnlyList<ParticipantDto> Participants
 );

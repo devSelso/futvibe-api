@@ -35,6 +35,12 @@ public class MatchConfiguration : IEntityTypeConfiguration<Match>
             .HasConversion<string>()
             .IsRequired();
 
+        builder.Property(m => m.Status)
+            .HasColumnName("status")
+            .HasConversion<string>()
+            .HasDefaultValue(Domain.Enums.MatchStatus.Scheduled)
+            .IsRequired();
+
         builder.Property(m => m.HostId).HasColumnName("host_id").IsRequired();
         builder.Property(m => m.CreatedAt).HasColumnName("created_at").IsRequired();
 

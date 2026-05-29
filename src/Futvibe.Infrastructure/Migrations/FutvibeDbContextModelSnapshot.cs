@@ -100,6 +100,13 @@ namespace Futvibe.Infrastructure.Migrations
                         .HasDefaultValue(0m)
                         .HasColumnName("price_per_player");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("text")
+                        .HasDefaultValue("Scheduled")
+                        .HasColumnName("status");
+
                     b.Property<TimeOnly>("Time")
                         .HasColumnType("time without time zone")
                         .HasColumnName("time");
@@ -126,6 +133,39 @@ namespace Futvibe.Infrastructure.Migrations
                     b.ToTable("matches", (string)null);
                 });
 
+            modelBuilder.Entity("Futvibe.Domain.Entities.MatchActivityLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("action");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<Guid>("MatchId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("match_id");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MatchId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("match_activity_logs", (string)null);
+                });
+
             modelBuilder.Entity("Futvibe.Domain.Entities.Participant", b =>
                 {
                     b.Property<Guid>("MatchId")
@@ -135,6 +175,12 @@ namespace Futvibe.Infrastructure.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid")
                         .HasColumnName("user_id");
+
+                    b.Property<bool>("PresenceRecorded")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("presence_recorded");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -146,6 +192,83 @@ namespace Futvibe.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("participants", (string)null);
+                });
+
+            modelBuilder.Entity("Futvibe.Domain.Entities.Rating", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<Guid>("MatchId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("match_id");
+
+                    b.Property<Guid>("RatedId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("rated_id");
+
+                    b.Property<Guid>("RaterId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("rater_id");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("integer")
+                        .HasColumnName("score");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RatedId");
+
+                    b.HasIndex("RaterId", "RatedId", "MatchId")
+                        .IsUnique();
+
+                    b.ToTable("ratings", (string)null);
+                });
+
+            modelBuilder.Entity("Futvibe.Domain.Entities.RefreshToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("expires_at");
+
+                    b.Property<bool>("IsRevoked")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("is_revoked");
+
+                    b.Property<string>("TokenHash")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("token_hash");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TokenHash")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("refresh_tokens", (string)null);
                 });
 
             modelBuilder.Entity("Futvibe.Domain.Entities.User", b =>
@@ -210,6 +333,17 @@ namespace Futvibe.Infrastructure.Migrations
                     b.ToTable("users", (string)null);
                 });
 
+            modelBuilder.Entity("Futvibe.Domain.Entities.MatchActivityLog", b =>
+                {
+                    b.HasOne("Futvibe.Domain.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Futvibe.Domain.Entities.Participant", b =>
                 {
                     b.HasOne("Futvibe.Domain.Entities.Match", null)
@@ -218,6 +352,17 @@ namespace Futvibe.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Futvibe.Domain.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Futvibe.Domain.Entities.RefreshToken", b =>
+                {
                     b.HasOne("Futvibe.Domain.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")

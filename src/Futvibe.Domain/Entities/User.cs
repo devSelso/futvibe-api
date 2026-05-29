@@ -4,6 +4,8 @@ namespace Futvibe.Domain.Entities;
 
 public class User
 {
+    private const int PresenceConfirmedPoints = 10;
+
     public Guid Id { get; private set; }
     public string Name { get; private set; } = default!;
     public string Email { get; private set; } = default!;
@@ -39,7 +41,9 @@ public class User
         Level = level;
     }
 
-    public void IncrementMatchesPlayed() => MatchesPlayed++;
-    public void AddPresenceScore(int points) => PresenceScore += points;
-    public void SeedMatchesPlayed(int count) => MatchesPlayed = count;
+    public void RecordMatchPresence()
+    {
+        MatchesPlayed++;
+        PresenceScore += PresenceConfirmedPoints;
+    }
 }

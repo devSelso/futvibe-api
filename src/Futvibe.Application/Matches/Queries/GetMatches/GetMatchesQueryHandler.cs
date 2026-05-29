@@ -10,7 +10,7 @@ public class GetMatchesQueryHandler(IMatchRepository matchRepo)
 {
     public async Task<IReadOnlyList<MatchDto>> Handle(GetMatchesQuery request, CancellationToken ct)
     {
-        var matches = await matchRepo.GetAllAsync(request.Level, request.Paid, request.Page, request.Limit, ct);
+        var matches = await matchRepo.GetAllAsync(request.Location, request.Page, request.Limit, ct);
         return matches.Select(MatchMapper.ToDto).ToList();
     }
 }

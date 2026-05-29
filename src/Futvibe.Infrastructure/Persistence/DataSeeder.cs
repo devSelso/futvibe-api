@@ -24,12 +24,6 @@ public static class DataSeeder
         u4.UpdateProfile(u4.Name, "Ex-vôlei de praia. Migrei para o futevôlei e não me arrependo.", u4.Level);
         u5.UpdateProfile(u5.Name, "Jogo toda semana na Barra. Bora marcar!", u5.Level);
 
-        u1.AddPresenceScore(98);  u1.SeedMatchesPlayed(142);
-        u2.AddPresenceScore(91);  u2.SeedMatchesPlayed(67);
-        u3.AddPresenceScore(75);  u3.SeedMatchesPlayed(12);
-        u4.AddPresenceScore(96);  u4.SeedMatchesPlayed(89);
-        u5.AddPresenceScore(84);  u5.SeedMatchesPlayed(45);
-
         db.Users.AddRange(u1, u2, u3, u4, u5);
         await db.SaveChangesAsync();
 

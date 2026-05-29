@@ -1,5 +1,5 @@
 using Futvibe.Application.Common.DTOs;
 
-namespace Futvibe.Application.Auth.Commands.Login;
+namespace Futvibe.Application.Auth;
 
-public record LoginResult(string Token, UserDto User);
+public record LoginResult(string Token, string RawRefreshToken, UserDto User);

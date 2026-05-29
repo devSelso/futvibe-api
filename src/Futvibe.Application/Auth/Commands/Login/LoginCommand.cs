@@ -1,3 +1,4 @@
+using Futvibe.Application.Auth;
 using MediatR;
 
 namespace Futvibe.Application.Auth.Commands.Login;
