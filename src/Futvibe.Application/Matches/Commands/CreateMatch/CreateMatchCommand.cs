@@ -7,6 +7,7 @@ namespace Futvibe.Application.Matches.Commands.CreateMatch;
 public record CreateMatchCommand(
     string Title,
     string Location,
+    string City,
     DateOnly Date,
     TimeOnly Time,
     MatchLevel Level,

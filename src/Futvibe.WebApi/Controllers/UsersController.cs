@@ -26,9 +26,9 @@ public class UsersController(IMediator mediator) : ControllerBase
     [Authorize]
     public async Task<IActionResult> UpdateMe([FromBody] UpdateProfileBody body, CancellationToken ct)
     {
-        var command = new UpdateProfileCommand(User.GetUserId(), body.Name, body.Bio, body.Level);
+        var command = new UpdateProfileCommand(User.GetUserId(), body.Name, body.Bio, body.Level, body.City);
         return Ok(await mediator.Send(command, ct));
     }
 }
 
-public record UpdateProfileBody(string Name, string? Bio, MatchLevel Level);
+public record UpdateProfileBody(string Name, string? Bio, MatchLevel Level, string City);

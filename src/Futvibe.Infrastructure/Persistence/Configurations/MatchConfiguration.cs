@@ -15,6 +15,7 @@ public class MatchConfiguration : IEntityTypeConfiguration<Match>
 
         builder.Property(m => m.Title).HasColumnName("title").HasMaxLength(200).IsRequired();
         builder.Property(m => m.Location).HasColumnName("location").HasMaxLength(300).IsRequired();
+        builder.Property(m => m.City).HasColumnName("city").HasMaxLength(100).IsRequired();
         builder.Property(m => m.Date).HasColumnName("date").IsRequired();
         builder.Property(m => m.Time).HasColumnName("time").IsRequired();
 
@@ -47,6 +48,7 @@ public class MatchConfiguration : IEntityTypeConfiguration<Match>
         builder.HasIndex(m => m.Date);
         builder.HasIndex(m => m.Level);
         builder.HasIndex(m => m.HostId);
+        builder.HasIndex(m => m.City);
 
         // Map private backing field _participants
         builder.HasMany(m => m.Participants)

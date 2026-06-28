@@ -1,6 +1,5 @@
 using Futvibe.Application.Matches.Commands.CreateMatch;
 using Futvibe.Application.Matches.Commands.CancelMatch;
-using Futvibe.Application.Matches.Commands.DeleteMatch;
 using Futvibe.Application.Matches.Commands.EditMatch;
 using Futvibe.Application.Matches.Commands.JoinMatch;
 using Futvibe.Application.Matches.Commands.LeaveMatch;
@@ -45,7 +44,7 @@ public class MatchesController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Create([FromBody] CreateMatchBody body, CancellationToken ct)
     {
         var command = new CreateMatchCommand(
-            body.Title, body.Location, body.Date, body.Time,
+            body.Title, body.Location, body.City, body.Date, body.Time,
             body.Level, body.PricePerPlayer, body.MaxPlayers,
             body.Visibility, User.GetUserId());
 
@@ -61,21 +60,13 @@ public class MatchesController(IMediator mediator) : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id:guid}")]
-    [Authorize]
-    public async Task<IActionResult> Delete(Guid id, CancellationToken ct)
-    {
-        await mediator.Send(new DeleteMatchCommand(id, User.GetUserId()), ct);
-        return NoContent();
-    }
-
     [HttpPatch("{id:guid}")]
     [Authorize]
     public async Task<IActionResult> Edit(Guid id, [FromBody] EditMatchBody body, CancellationToken ct)
     {
         var command = new EditMatchCommand(
             id, User.GetUserId(),
-            body.Title, body.Location, body.Date, body.Time,
+            body.Title, body.Location, body.City, body.Date, body.Time,
             body.Level, body.PricePerPlayer, body.MaxPlayers, body.Visibility);
 
         await mediator.Send(command, ct);
@@ -127,6 +118,7 @@ public class MatchesController(IMediator mediator) : ControllerBase
 public record EditMatchBody(
     string Title,
     string Location,
+    string City,
     DateOnly Date,
     TimeOnly Time,
     MatchLevel Level,
@@ -137,6 +129,7 @@ public record EditMatchBody(
 public record CreateMatchBody(
     string Title,
     string Location,
+    string City,
     DateOnly Date,
     TimeOnly Time,
     MatchLevel Level,

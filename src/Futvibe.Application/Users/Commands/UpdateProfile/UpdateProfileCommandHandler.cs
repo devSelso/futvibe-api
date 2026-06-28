@@ -14,7 +14,7 @@ public class UpdateProfileCommandHandler(IUserRepository userRepo)
         var user = await userRepo.GetByIdAsync(request.UserId, ct)
             ?? throw new NotFoundException($"Usuário {request.UserId} não encontrado.");
 
-        user.UpdateProfile(request.Name, request.Bio, request.Level);
+        user.UpdateProfile(request.Name, request.Bio, request.Level, request.City);
 
         await userRepo.SaveChangesAsync(ct);
 

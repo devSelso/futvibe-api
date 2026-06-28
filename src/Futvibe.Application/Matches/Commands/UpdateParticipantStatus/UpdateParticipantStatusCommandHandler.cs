@@ -9,7 +9,8 @@ namespace Futvibe.Application.Matches.Commands.UpdateParticipantStatus;
 public class UpdateParticipantStatusCommandHandler(
     IMatchRepository matchRepo,
     IUserRepository userRepo,
-    IMatchActivityRepository activityRepo) : IRequestHandler<UpdateParticipantStatusCommand>
+    IMatchActivityRepository activityRepo,
+    INotificationRepository notificationRepo) : IRequestHandler<UpdateParticipantStatusCommand>
 {
     public async Task Handle(UpdateParticipantStatusCommand request, CancellationToken ct)
     {
@@ -27,7 +28,7 @@ public class UpdateParticipantStatusCommandHandler(
                 var user = await userRepo.GetByIdAsync(request.TargetUserId, ct);
                 if (user is not null)
                 {
-                    user.RecordMatchPresence();
+                    user.RecordMatchPresence(present: true);
                     participant.MarkPresenceRecorded();
                 }
             }
@@ -41,6 +42,13 @@ public class UpdateParticipantStatusCommandHandler(
         {
             var log = MatchActivityLog.Create(request.MatchId, request.TargetUserId, action);
             await activityRepo.AddAsync(log, ct);
+
+            var (notifType, message) = request.NewStatus == ParticipantStatus.Confirmed
+                ? (NotificationType.JoinAccepted, $"Sua solicitação para \"{match.Title}\" foi aceita.")
+                : (NotificationType.JoinRejected, $"Sua solicitação para \"{match.Title}\" foi recusada.");
+
+            var notification = Notification.Create(request.TargetUserId, notifType, match.Id, message);
+            await notificationRepo.AddAsync(notification, ct);
         }
 
         await matchRepo.SaveChangesAsync(ct);

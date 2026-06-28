@@ -24,6 +24,7 @@ public static class DependencyInjection
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IRatingRepository, RatingRepository>();
         services.AddScoped<IMatchActivityRepository, MatchActivityRepository>();
+        services.AddScoped<INotificationRepository, NotificationRepository>();
 
         services.AddScoped<IJwtService, JwtService>();
 

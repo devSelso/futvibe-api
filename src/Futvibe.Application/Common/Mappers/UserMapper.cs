@@ -11,6 +11,7 @@ public static class UserMapper
         user.Email,
         user.Avatar,
         user.Bio,
+        user.City,
         user.Level.ToString().ToLower(),
         user.PresenceScore,
         user.MatchesPlayed,

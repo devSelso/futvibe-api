@@ -22,7 +22,7 @@ public class RegisterCommandHandler(
 
         var level = Enum.Parse<MatchLevel>(request.Level, ignoreCase: true);
         var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
-        var user = User.Create(request.Name, request.Email, passwordHash, level);
+        var user = User.Create(request.Name, request.Email, passwordHash, level, request.City);
 
         await userRepo.AddAsync(user, ct);
         await userRepo.SaveChangesAsync(ct);
@@ -39,6 +39,7 @@ public class RegisterCommandHandler(
             user.Email,
             user.Avatar,
             user.Bio,
+            user.City,
             user.Level.ToString().ToLower(),
             user.PresenceScore,
             user.MatchesPlayed);

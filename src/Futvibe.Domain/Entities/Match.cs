@@ -5,11 +5,13 @@ namespace Futvibe.Domain.Entities;
 
 public class Match
 {
-    private const int ValidationWindowHours = 72;
+    private const int ValidationStartHours = 2;
+    private const int ValidationEndHours = 72;
 
     public Guid Id { get; private set; }
     public string Title { get; private set; } = default!;
     public string Location { get; private set; } = default!;
+    public string City { get; private set; } = default!;
     public DateOnly Date { get; private set; }
     public TimeOnly Time { get; private set; }
     public MatchLevel Level { get; private set; }
@@ -26,7 +28,7 @@ public class Match
     private Match() { }
 
     public static Match Create(
-        string title, string location,
+        string title, string location, string city,
         DateOnly date, TimeOnly time,
         MatchLevel level, decimal pricePerPlayer,
         int maxPlayers, MatchVisibility visibility,
@@ -37,6 +39,7 @@ public class Match
             Id = Guid.NewGuid(),
             Title = title,
             Location = location,
+            City = city,
             Date = date,
             Time = time,
             Level = level,
@@ -105,18 +108,9 @@ public class Match
         Status = MatchStatus.Cancelled;
     }
 
-    public void ValidateCanDelete(Guid requestingUserId)
-    {
-        if (HostId != requestingUserId)
-            throw new ForbiddenException("Apenas o host pode excluir a partida.");
-
-        if (Status != MatchStatus.Scheduled)
-            throw new BusinessException("Não é possível excluir uma partida já encerrada ou em validação.");
-    }
-
     public void Edit(
         Guid requestingUserId,
-        string title, string location,
+        string title, string location, string city,
         DateOnly date, TimeOnly time,
         MatchLevel level, decimal pricePerPlayer,
         int maxPlayers, MatchVisibility visibility)
@@ -129,6 +123,7 @@ public class Match
 
         Title = title;
         Location = location;
+        City = city;
         Date = date;
         Time = time;
         Level = level;
@@ -175,28 +170,41 @@ public class Match
             .ToList();
     }
 
-    // Lazy maintenance — called on GET to keep status consistent
-    public bool TryAdvanceStatus()
+    // Lazy maintenance — called on GET to keep status consistent.
+    // Returns (changed, userIds that should receive auto-presence on auto-close).
+    public (bool Changed, IReadOnlyList<Guid> AutoPresenceUserIds) TryAdvanceStatus()
     {
-        if (Status is MatchStatus.Closed or MatchStatus.Cancelled) return false;
+        if (Status is MatchStatus.Closed or MatchStatus.Cancelled) return (false, []);
 
         var matchDateTime = Date.ToDateTime(Time, DateTimeKind.Utc);
         var now = DateTime.UtcNow;
+        var validationStart = matchDateTime.AddHours(ValidationStartHours);
+        var validationEnd = matchDateTime.AddHours(ValidationEndHours);
 
-        if (Status == MatchStatus.Scheduled && now >= matchDateTime)
+        if (Status == MatchStatus.Scheduled && now >= validationStart)
         {
-            Status = now <= matchDateTime.AddHours(ValidationWindowHours)
-                ? MatchStatus.PendingValidation
-                : MatchStatus.Closed;
-            return true;
+            if (now <= validationEnd)
+            {
+                Status = MatchStatus.PendingValidation;
+                return (true, []);
+            }
+            return AutoCloseWithPresence();
         }
 
-        if (Status == MatchStatus.PendingValidation && now > matchDateTime.AddHours(ValidationWindowHours))
-        {
-            Status = MatchStatus.Closed;
-            return true;
-        }
+        if (Status == MatchStatus.PendingValidation && now > validationEnd)
+            return AutoCloseWithPresence();
 
-        return false;
+        return (false, []);
+    }
+
+    private (bool Changed, IReadOnlyList<Guid> AutoPresenceUserIds) AutoCloseWithPresence()
+    {
+        Status = MatchStatus.Closed;
+        var eligible = _participants
+            .Where(p => p.Status == ParticipantStatus.Confirmed && !p.PresenceRecorded)
+            .ToList();
+        foreach (var p in eligible)
+            p.MarkPresenceRecorded();
+        return (true, eligible.Select(p => p.UserId).ToList());
     }
 }

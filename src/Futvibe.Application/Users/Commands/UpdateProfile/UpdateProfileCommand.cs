@@ -8,5 +8,6 @@ public record UpdateProfileCommand(
     Guid UserId,
     string Name,
     string? Bio,
-    MatchLevel Level
+    MatchLevel Level,
+    string City
 ) : IRequest<UserDto>;

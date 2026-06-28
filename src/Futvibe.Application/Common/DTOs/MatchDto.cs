@@ -4,6 +4,7 @@ public record MatchDto(
     Guid Id,
     string Title,
     string Location,
+    string City,
     string Date,
     string Time,
     string Level,

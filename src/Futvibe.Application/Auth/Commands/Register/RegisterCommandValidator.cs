@@ -15,5 +15,7 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
             .NotEmpty()
             .Must(l => ValidLevels.Contains(l?.ToLower()))
             .WithMessage("Nível deve ser beginner, intermediate ou advanced.");
+        RuleFor(x => x.City).NotEmpty().WithMessage("Cidade é obrigatória.")
+            .MaximumLength(100).WithMessage("Cidade deve ter no máximo 100 caracteres.");
     }
 }

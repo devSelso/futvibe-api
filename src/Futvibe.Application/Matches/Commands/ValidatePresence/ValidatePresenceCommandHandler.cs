@@ -19,7 +19,7 @@ public class ValidatePresenceCommandHandler(
 
         var eligibleValidations = match.ValidatePresence(request.RequestingUserId, validationPairs);
 
-        foreach (var (userId, present) in eligibleValidations.Where(v => v.Present))
+        foreach (var (userId, present) in eligibleValidations)
         {
             var participant = match.Participants.First(p => p.UserId == userId);
             if (participant.PresenceRecorded) continue;
@@ -27,7 +27,7 @@ public class ValidatePresenceCommandHandler(
             var user = await userRepo.GetByIdAsync(userId, ct);
             if (user is not null)
             {
-                user.RecordMatchPresence();
+                user.RecordMatchPresence(present);
                 participant.MarkPresenceRecorded();
             }
         }

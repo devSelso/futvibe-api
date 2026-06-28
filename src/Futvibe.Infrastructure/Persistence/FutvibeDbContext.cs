@@ -12,6 +12,7 @@ public class FutvibeDbContext(DbContextOptions<FutvibeDbContext> options) : DbCo
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
     public DbSet<Rating> Ratings => Set<Rating>();
     public DbSet<MatchActivityLog> MatchActivityLogs => Set<MatchActivityLog>();
+    public DbSet<Notification> Notifications => Set<Notification>();
 
     protected override void OnModelCreating(ModelBuilder builder)
         => builder.ApplyConfigurationsFromAssembly(typeof(FutvibeDbContext).Assembly);

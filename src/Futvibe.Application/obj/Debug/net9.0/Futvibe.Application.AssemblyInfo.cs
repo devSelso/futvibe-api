@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Futvibe.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e839130849adcd77704a7d05ef9cb50a7e5bb93c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9cd5429f7217faf9f6b438bb6cbb546494ee95f6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Futvibe.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Futvibe.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

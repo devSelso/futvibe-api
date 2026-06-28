@@ -67,6 +67,12 @@ namespace Futvibe.Infrastructure.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("city");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
@@ -124,6 +130,8 @@ namespace Futvibe.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("City");
+
                     b.HasIndex("Date");
 
                     b.HasIndex("HostId");
@@ -164,6 +172,51 @@ namespace Futvibe.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("match_activity_logs", (string)null);
+                });
+
+            modelBuilder.Entity("Futvibe.Domain.Entities.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<bool>("IsRead")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("is_read");
+
+                    b.Property<Guid?>("MatchId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("match_id");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)")
+                        .HasColumnName("message");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("type");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("UserId", "IsRead");
+
+                    b.ToTable("notifications", (string)null);
                 });
 
             modelBuilder.Entity("Futvibe.Domain.Entities.Participant", b =>
@@ -287,6 +340,12 @@ namespace Futvibe.Infrastructure.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("bio");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("city");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
@@ -301,6 +360,9 @@ namespace Futvibe.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("level");
+
+                    b.Property<int>("MatchesAttended")
+                        .HasColumnType("integer");
 
                     b.Property<int>("MatchesPlayed")
                         .ValueGeneratedOnAdd()

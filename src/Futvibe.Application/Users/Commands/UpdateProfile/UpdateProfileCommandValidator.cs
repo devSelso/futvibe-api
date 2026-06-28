@@ -10,5 +10,6 @@ public class UpdateProfileCommandValidator : AbstractValidator<UpdateProfileComm
         RuleFor(x => x.Name).NotEmpty().MaximumLength(100);
         RuleFor(x => x.Bio).MaximumLength(200).When(x => x.Bio is not null);
         RuleFor(x => x.Level).IsInEnum();
+        RuleFor(x => x.City).NotEmpty().MaximumLength(100);
     }
 }

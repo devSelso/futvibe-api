@@ -8,6 +8,7 @@ public record EditMatchCommand(
     Guid RequestingUserId,
     string Title,
     string Location,
+    string City,
     DateOnly Date,
     TimeOnly Time,
     MatchLevel Level,

@@ -17,7 +17,7 @@ public class MatchRepository(FutvibeDbContext db) : IMatchRepository
             .FirstOrDefaultAsync(m => m.Id == id, ct);
 
     public async Task<IReadOnlyList<Match>> GetAllAsync(
-        string? location, int page, int limit, CancellationToken ct = default)
+        string? location, decimal? maxPrice, int page, int limit, CancellationToken ct = default)
     {
         var query = db.Matches
             .Include(m => m.Participants)
@@ -25,7 +25,12 @@ public class MatchRepository(FutvibeDbContext db) : IMatchRepository
             .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(location))
-            query = query.Where(m => EF.Functions.ILike(m.Location, $"%{location}%"));
+            query = query.Where(m => EF.Functions.ILike(m.City, $"%{location}%"));
+
+        if (maxPrice.HasValue)
+            query = maxPrice.Value == 0
+                ? query.Where(m => m.PricePerPlayer == 0)
+                : query.Where(m => m.PricePerPlayer <= maxPrice.Value);
 
         return await query
             .OrderBy(m => m.Date).ThenBy(m => m.Time)
@@ -43,9 +48,6 @@ public class MatchRepository(FutvibeDbContext db) : IMatchRepository
 
     public async Task AddAsync(Match match, CancellationToken ct = default)
         => await db.Matches.AddAsync(match, ct);
-
-    public void Delete(Match match)
-        => db.Matches.Remove(match);
 
     public Task SaveChangesAsync(CancellationToken ct = default)
         => db.SaveChangesAsync(ct);

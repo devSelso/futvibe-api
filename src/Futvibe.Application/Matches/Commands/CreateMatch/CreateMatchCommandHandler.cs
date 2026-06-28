@@ -14,6 +14,7 @@ public class CreateMatchCommandHandler(IMatchRepository matchRepo)
         var match = Match.Create(
             request.Title,
             request.Location,
+            request.City,
             request.Date,
             request.Time,
             request.Level,

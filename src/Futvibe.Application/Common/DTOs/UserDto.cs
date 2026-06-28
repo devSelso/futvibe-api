@@ -6,6 +6,7 @@ public record UserDto(
     string Email,
     string? Avatar,
     string? Bio,
+    string City,
     string Level,
     int PresenceScore,
     int MatchesPlayed,

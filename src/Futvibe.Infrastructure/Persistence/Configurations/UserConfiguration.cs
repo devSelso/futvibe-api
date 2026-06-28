@@ -20,6 +20,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.PasswordHash).HasColumnName("password_hash").IsRequired();
         builder.Property(u => u.Avatar).HasColumnName("avatar");
         builder.Property(u => u.Bio).HasColumnName("bio").HasMaxLength(200);
+        builder.Property(u => u.City).HasColumnName("city").HasMaxLength(100).IsRequired();
 
         builder.Property(u => u.Level)
             .HasColumnName("level")

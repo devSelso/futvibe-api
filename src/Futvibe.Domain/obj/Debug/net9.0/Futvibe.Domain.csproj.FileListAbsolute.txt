@@ -22,3 +22,15 @@ C:\Users\selso\OneDrive\Desktop\futvibe-project\futvibe-api\src\Futvibe.Domain\o
 C:\Users\selso\OneDrive\Desktop\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\refint\Futvibe.Domain.dll
 C:\Users\selso\OneDrive\Desktop\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\Futvibe.Domain.pdb
 C:\Users\selso\OneDrive\Desktop\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\ref\Futvibe.Domain.dll
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\bin\Debug\net9.0\Futvibe.Domain.deps.json
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\bin\Debug\net9.0\Futvibe.Domain.dll
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\bin\Debug\net9.0\Futvibe.Domain.pdb
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\Futvibe.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\Futvibe.Domain.AssemblyInfoInputs.cache
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\Futvibe.Domain.AssemblyInfo.cs
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\Futvibe.Domain.csproj.CoreCompileInputs.cache
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\Futvibe.Domain.sourcelink.json
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\Futvibe.Domain.dll
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\refint\Futvibe.Domain.dll
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\Futvibe.Domain.pdb
+D:\futvibe-project\futvibe-api\src\Futvibe.Domain\obj\Debug\net9.0\ref\Futvibe.Domain.dll

@@ -9,6 +9,7 @@ public static class MatchMapper
         match.Id,
         match.Title,
         match.Location,
+        match.City,
         match.Date.ToString("yyyy-MM-dd"),
         match.Time.ToString("HH:mm"),
         match.Level.ToString().ToLower(),
@@ -27,6 +28,7 @@ public static class MatchMapper
                 p.User.Email,
                 p.User.Avatar,
                 p.User.Bio,
+                p.User.City,
                 p.User.Level.ToString().ToLower(),
                 p.User.PresenceScore,
                 p.User.MatchesPlayed)
